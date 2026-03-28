@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { MdSchool, MdCircle, MdCalendarToday } from "react-icons/md";
 
 // TODO: Replace with actual API call to fetch courses
 // This is dynamic skeleton data - will be fetched from API
@@ -40,11 +41,23 @@ const mockCourses = [
 ];
 
 const stats = [
-  { label: "Total Courses", value: "12", icon: "📚" },
-  { label: "Active Students", value: "840", icon: "👥" },
-  { label: "Live Now", value: "2", icon: "🔴" },
-  { label: "Upcoming", value: "3", icon: "📅" },
+  { label: "Total Courses", value: "12" },
+  { label: "Live Now", value: "2" },
+  { label: "Upcoming", value: "3" },
 ];
+
+const getStatIcon = (label: string) => {
+  switch (label) {
+    case "Total Courses":
+      return <MdSchool className="w-8 h-8 text-[#BF0000]" />;
+    case "Live Now":
+      return <MdCircle className="w-8 h-8 text-red-500 animate-pulse" />;
+    case "Upcoming":
+      return <MdCalendarToday className="w-8 h-8 text-[#BF0000]" />;
+    default:
+      return null;
+  }
+};
 
 export default function DashboardPage() {
   return (
@@ -53,12 +66,12 @@ export default function DashboardPage() {
       <div>
         <h1 className="text-2xl font-bold text-[#30343e]">Dashboard</h1>
         <p className="text-[#8a8989] mt-1">
-          Welcome back! Here&apos;s an overview of your courses.
+          View your courses and access live streaming links.
         </p>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" data-test="stats">
         {stats.map((stat) => (
           <div
             key={stat.label}
@@ -71,7 +84,7 @@ export default function DashboardPage() {
                   {stat.value}
                 </p>
               </div>
-              <span className="text-3xl">{stat.icon}</span>
+              <div>{getStatIcon(stat.label)}</div>
             </div>
           </div>
         ))}
@@ -124,42 +137,16 @@ export default function DashboardPage() {
 
                 {/* Info */}
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#e5e5e5]">
-                  <div className="flex items-center gap-1.5 text-sm text-[#8a8989]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M23 21v-2a4 4 0 00-3-3.87" />
-                      <path d="M16 3.13a4 4 0 010 7.75" />
-                    </svg>
-                    {course.studentsEnrolled} students
-                  </div>
-
                   {course.hasLiveStream && (
                     <div className="flex items-center gap-1.5">
                       <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
                       <span className="text-xs font-medium text-red-600">
-                        Live
+                        Live Ready
                       </span>
                     </div>
                   )}
-                </div>
-
-                {/* Actions */}
-                <div className="flex gap-2 mt-4">
-                  <button className="flex-1 py-2 text-sm font-medium text-[#BF0000] bg-[#BF0000]/10 rounded-lg hover:bg-[#BF0000]/20 transition-colors">
-                    Manage
-                  </button>
-                  {course.hasLiveStream && (
-                    <button className="flex-1 py-2 text-sm font-medium text-white bg-[#BF0000] rounded-lg hover:bg-[#960000] transition-colors">
-                      Go Live
-                    </button>
+                  {!course.hasLiveStream && (
+                    <span className="text-xs text-[#8a8989]">Coming soon</span>
                   )}
                 </div>
               </div>

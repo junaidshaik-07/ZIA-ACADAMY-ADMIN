@@ -68,16 +68,11 @@ export default function CoursesPage() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-[#30343e]">All Courses</h1>
-          <p className="text-[#8a8989] mt-1">
-            Manage your courses and live stream links.
-          </p>
-        </div>
-        <button className="px-5 py-2.5 bg-[#BF0000] hover:bg-[#960000] text-white text-sm font-semibold rounded-lg transition-colors">
-          + Add Course
-        </button>
+      <div>
+        <h1 className="text-2xl font-bold text-[#30343e]">All Courses</h1>
+        <p className="text-[#8a8989] mt-1">
+          View your registered courses and live stream links.
+        </p>
       </div>
 
       {/* Courses Table */}
@@ -92,16 +87,10 @@ export default function CoursesPage() {
                 Stream
               </th>
               <th className="text-left px-6 py-3 text-xs font-semibold text-[#8a8989] uppercase tracking-wider">
-                Students
-              </th>
-              <th className="text-left px-6 py-3 text-xs font-semibold text-[#8a8989] uppercase tracking-wider">
                 Status
               </th>
               <th className="text-left px-6 py-3 text-xs font-semibold text-[#8a8989] uppercase tracking-wider">
-                Live Stream
-              </th>
-              <th className="text-left px-6 py-3 text-xs font-semibold text-[#8a8989] uppercase tracking-wider">
-                Actions
+                Live Stream Link
               </th>
             </tr>
           </thead>
@@ -126,9 +115,6 @@ export default function CoursesPage() {
                     {course.stream}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-sm text-[#333333]">
-                  {course.studentsEnrolled}
-                </td>
                 <td className="px-6 py-4">
                   <span
                     className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${
@@ -151,16 +137,6 @@ export default function CoursesPage() {
                   ) : (
                     <span className="text-xs text-[#8a8989]">Not set</span>
                   )}
-                </td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-2">
-                    {/* <button className="px-3 py-1.5 text-xs font-medium text-[#BF0000] bg-[#BF0000]/10 rounded-lg hover:bg-[#BF0000]/20 transition-colors">
-                      Edit
-                    </button> */}
-                    <button className="px-3 py-1.5 text-xs font-medium text-white bg-[#BF0000] rounded-lg hover:bg-[#960000] transition-colors">
-                      Stream
-                    </button>
-                  </div>
                 </td>
               </tr>
             ))}

@@ -1,5 +1,7 @@
 "use client";
 
+import { MdCalendarToday, MdLink } from "react-icons/md";
+
 export default function LiveStreamsPage() {
   // TODO: Fetch courses with live stream data from API
   const liveStreams = [
@@ -35,7 +37,7 @@ export default function LiveStreamsPage() {
       <div>
         <h1 className="text-2xl font-bold text-[#30343e]">Live Streams</h1>
         <p className="text-[#8a8989] mt-1">
-          Manage live streaming links for your courses.
+          View your live streaming links and scheduled sessions.
         </p>
       </div>
 
@@ -70,23 +72,25 @@ export default function LiveStreamsPage() {
                   <span className="px-2.5 py-0.5 text-xs font-medium rounded-full bg-[#BF0000]/10 text-[#BF0000]">
                     {stream.stream}
                   </span>
-                  <span>
-                    📅{" "}
-                    {new Date(stream.scheduledAt).toLocaleString("en-IN", {
-                      dateStyle: "medium",
-                      timeStyle: "short",
-                    })}
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <MdCalendarToday className="w-4 h-4 text-[#BF0000]" />
+                    <span>
+                      {new Date(stream.scheduledAt).toLocaleString("en-IN", {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      })}
+                    </span>
+                  </div>
                 </div>
 
                 {stream.liveUrl && (
                   <div className="mt-3 flex items-center gap-2">
-                    <span className="text-sm text-[#8a8989]">Stream URL:</span>
+                    <MdLink className="w-4 h-4 text-[#BF0000]" />
                     <a
                       href={stream.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-[#BF0000] hover:underline"
+                      className="text-sm text-[#BF0000] hover:underline truncate"
                     >
                       {stream.liveUrl}
                     </a>
@@ -94,16 +98,6 @@ export default function LiveStreamsPage() {
                 )}
               </div>
 
-              <div className="flex gap-2">
-                {/* <button className="px-4 py-2 text-sm font-medium text-[#BF0000] bg-[#BF0000]/10 rounded-lg hover:bg-[#BF0000]/20 transition-colors">
-                  Edit Link
-                </button> */}
-                {stream.status === "live" && (
-                  <button className="px-4 py-2 text-sm font-medium text-white bg-[#BF0000] rounded-lg hover:bg-[#960000] transition-colors">
-                    End Stream
-                  </button>
-                )}
-              </div>
             </div>
           </div>
         ))}

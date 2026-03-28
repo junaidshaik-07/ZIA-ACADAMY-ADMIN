@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Zia Academy - Admin Portal",
-  description: "Admin portal for managing Zia Academy courses and live streams",
+  description: "Admin portal for Zia Academy courses and live streams",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

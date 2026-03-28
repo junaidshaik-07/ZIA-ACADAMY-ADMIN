@@ -40,33 +40,36 @@ export default function LoginPage() {
 
         <div className="relative z-10 flex flex-col justify-between p-12 w-full">
           {/* Top - Logo */}
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-              <Image src="/logo.png" alt="Zia Academy" width={32} height={32} />
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shadow-lg">
+              <Image src="/logo.png" alt="Zia Academy" width={40} height={40} />
             </div>
-            <span className="text-white/90 text-lg font-semibold">Zia Academy</span>
+            <div>
+              <p className="text-white text-sm font-medium">Zia Academy</p>
+              <p className="text-white/70 text-xs">Admin Portal</p>
+            </div>
           </div>
 
           {/* Center - Hero text */}
           <div className="space-y-6">
             <h2 className="text-white text-4xl font-bold leading-tight">
-              Manage your<br />courses with ease
+              Deliver live<br />lectures instantly
             </h2>
             <p className="text-white/70 text-lg max-w-sm leading-relaxed">
-              Access live streams, track students, and manage all your courses from one powerful admin dashboard.
+              View your courses, access live streaming links, and deliver lectures to students across Zia Academy platform.
             </p>
             <div className="flex gap-8 pt-4">
               <div>
-                <p className="text-white text-2xl font-bold">500+</p>
-                <p className="text-white/60 text-sm">Active Students</p>
+                <p className="text-white text-2xl font-bold">1000+</p>
+                <p className="text-white/60 text-sm">Live Lectures</p>
               </div>
               <div>
-                <p className="text-white text-2xl font-bold">12+</p>
-                <p className="text-white/60 text-sm">Courses</p>
+                <p className="text-white text-2xl font-bold">50K+</p>
+                <p className="text-white/60 text-sm">Students Reached</p>
               </div>
               <div>
-                <p className="text-white text-2xl font-bold">98%</p>
-                <p className="text-white/60 text-sm">Satisfaction</p>
+                <p className="text-white text-2xl font-bold">24/7</p>
+                <p className="text-white/60 text-sm">Streaming</p>
               </div>
             </div>
           </div>
@@ -92,7 +95,7 @@ export default function LoginPage() {
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-[#1a1a1a]">Welcome back</h2>
               <p className="text-[#6b7280] mt-2 text-[15px]">
-                Sign in to your admin account
+                Sign in to access your courses and go live
               </p>
             </div>
 
